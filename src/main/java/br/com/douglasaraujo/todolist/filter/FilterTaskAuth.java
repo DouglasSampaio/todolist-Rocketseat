@@ -27,18 +27,18 @@ public class FilterTaskAuth extends OncePerRequestFilter {
             throws ServletException, IOException {
 
         String servletPah = request.getServletPath();
-        if (servletPah.equals("/tasks/")) {
+        if (servletPah.startsWith("/tasks/")) {
             // Pegar a autenticação
             String authorization = request.getHeader("Authorization");
-            System.out.println("authorization " + authorization);
+           // System.out.println("authorization " + authorization);
 
             String authEncoded = authorization.substring("Basic".length()).trim();
 
             byte[] authDecode = Base64.getDecoder().decode(authEncoded);
-            System.out.println(authDecode);
+           // System.out.println(authDecode);
 
             String authString = new String(authDecode);
-            System.out.println(authString);
+            //System.out.println(authString);
 
             String[] credentials = authString.split(":");
             String username = credentials[0];

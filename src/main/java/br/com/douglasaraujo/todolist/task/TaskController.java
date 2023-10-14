@@ -72,7 +72,7 @@ public class TaskController {
             Utils.copyNonNullProperties(taskModel, (TaskModel) task);
             TaskModel taskUpdated = this.taskRepository.save(task);
 
-            return ResponseEntity.ok().body(this.taskRepository.save(taskUpdated));
+            return ResponseEntity.ok().body(taskUpdated);
 
         }
 

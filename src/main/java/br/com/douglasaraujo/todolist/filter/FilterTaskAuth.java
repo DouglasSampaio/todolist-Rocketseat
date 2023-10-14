@@ -52,7 +52,7 @@ public class FilterTaskAuth extends OncePerRequestFilter {
                 // Validar senha
                 Result passwordVerify = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword());
                 if (passwordVerify.verified) {
-
+                    request.setAttribute("idUser", user.getId());
                     filterChain.doFilter(request, response);
                 } else {
                     response.sendError(401);
@@ -64,8 +64,6 @@ public class FilterTaskAuth extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
 
         }
-
-        // filterChain.doFilter(request, response);
     }
 
 }
